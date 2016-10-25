@@ -1,0 +1,6 @@
+[
+{"title":"Job 1","status":"NotRun","count":0},
+{"title":"Job 2","status":"Error","count":10},
+{"title":"Job 3","status":"Success","count":100},
+{"title":"Job 4","status":"Error","count":99}
+]

@@ -1,0 +1,5 @@
+<div class="row">
+	<div class="col-xs-12">
+		<app-job *ngFor="let job of jobs" [job]="job" (click)="clicked(job)" [class.selected]="isSelected(job)"></app-job>
+	</div>
+</div>
