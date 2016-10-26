@@ -2,17 +2,3 @@
 
 </app-job-list>
 
-
-<div class="row">
-	<h3>SignalR w/ Angular 2 demo</h3>
-
-	<div>
-		<span>Connection state: {{connectionState$ | async}}</span>
-	</div>
-
-	<div >
-		<app-task [eventName]="'longTask.status'" [apiUrl]="'http://localhost:9123/tasks/long'"></app-task>
-		<app-task [eventName]="'shortTask.status'" [apiUrl]="'http://localhost:9123/tasks/short'"></app-task>
-	</div>
-
-</div>

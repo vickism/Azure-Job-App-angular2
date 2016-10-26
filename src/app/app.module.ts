@@ -11,7 +11,7 @@ import { JobListComponent } from './job-list/job-list.component';
 import { TaskComponent } from './task/task.component';
 
 let channelConfig = new ChannelConfig();
-channelConfig.url = "http://localhost:9123/signalr";
+channelConfig.url = "http://localhost:50601/signalr";
 channelConfig.hubName = "EventHub";
 
 @NgModule({
