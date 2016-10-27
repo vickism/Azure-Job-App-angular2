@@ -1,0 +1,67 @@
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 tile">
+	<div class="card card-inverse card-primary text-xs-center card-stats">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2><i class="fa fa-globe"></i></h2>
+				<h5>Jobs</h5>
+				<h2>{{TotalJobs()}}</h2>
+			</blockquote>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 tile">
+	<div class="card card-inverse card-info text-xs-center card-stats">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2><i class="fa fa-hand-spock-o" aria-hidden="true"></i></h2>
+				<h5>Running</h5>
+				<h2>{{TotalRunningJobs()}}%</h2>
+			</blockquote>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 tile">
+	<div class="card card-inverse text-xs-center card-muted card-stats">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2><i class="fa fa-hand-paper-o" aria-hidden="true"></i></h2>
+				<h5>Stopped</h5>
+				<h2>{{TotalStoppedJobs()}}%</h2>
+			</blockquote>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 tile">
+	<div class="card card-inverse card-success text-xs-center card-stats">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2><i class="fa fa-thumbs-o-up"></i></h2>
+				<h5>Success</h5>
+				<h2>{{TotalSuccessfulJobs()}}%</h2>
+			</blockquote>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 tile">
+	<div class="card card-inverse card-danger text-xs-center card-stats">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2><i class="fa fa-thumbs-o-down"></i></h2>
+				<h5>Failure</h5>
+				<h2>{{TotalFailedJobs()}}%</h2>
+			</blockquote>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2 tile">
+	<div class="card-stats card card-inverse card-warning text-xs-center">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2><i class="fa fa-bar-chart-o"></i></h2>
+				<h5>Runs</h5>
+				<h2>{{TotalRuns()}}</h2>
+			</blockquote>
+		</div>
+	</div>
+</div>
+

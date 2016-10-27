@@ -30,6 +30,10 @@ export class JobListComponent implements OnInit {
     return job.title === this.selectedJob.title;
   }
 
+  jobCount():number{
+    return this.jobs.length;
+  }
+
   ngOnInit() {
   }
 

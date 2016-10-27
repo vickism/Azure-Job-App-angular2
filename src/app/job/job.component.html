@@ -1,9 +1,14 @@
-<div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-	<div [style.background-color]='job.statusColor' style="height:200px;" class="panel panel-default selectable">
-   <div class="panel-heading">{{job.title}}
-     <span class="badge pull-right">{{job.count}}</span>
-   </div>
-		<div class="panel-body">
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 tile">
+	<div [class.card-primary]="isStatusNotRun()" [class.card-info]="isStatusRunning()" [class.card-danger]="isStatusError()"
+		[class.card-success]="isStatusSuccess()" [class.card-muted]= "isStatusStopped()"
+		 class="card card-inverse text-xs-center">
+		<div class="card-block">
+			<blockquote class="card-blockquote">
+				<h2>{{job.title}}</h2>
+				<h1>{{job.count}}</h1>
+				<p *ngIf="job.lastRuntime"><i class="fa fa-clock-o"></i> {{job.lastRuntime}}</p>
+				<footer *ngIf="job.duration"><i class="fa fa-info-circle"></i> Took <cite title="Source Title">{{job.duration}}</cite></footer>
+			</blockquote>
 		</div>
 	</div>
 </div>

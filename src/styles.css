@@ -6,3 +6,74 @@
 .selected .selectable{
     border: 1px solid red;
 }
+
+.background-dark {
+			background: #293a46;
+			color: white;
+		}
+		
+		.card {
+			height: 200px;
+		}
+		
+		.card-stats {
+			border-radius: 200px;
+			height: 9rem;
+			width: 9rem;
+			vertical-align: middle;
+			text-align: center !important;
+			margin: 0 auto;
+		}
+		
+		.tile {
+			margin-bottom: 1rem;
+		}
+		
+		.anx {
+			margin-top: 0;
+			margin-bottom: 0;
+			font-size: 100%;
+			color: inherit;
+		}
+		
+		.anw {
+			position: relative;
+			z-index: 2;
+			display: inline-block;
+			padding-left: 1em;
+			padding-right: 1em;
+			color: #6f7890;
+			vertical-align: middle;
+			background-color: #252830;
+		}
+		
+		.anv {
+			position: relative;
+			font-size: 12px;
+			line-height: 20px;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		
+		.anv:before {
+			position: absolute;
+			top: 50%;
+			display: block;
+			content: "";
+			width: 100%;
+			height: 1px;
+			background-color: #434857;
+		}
+		
+		.alg {
+			margin-top: 30px !important;
+		}
+		
+		.ala {
+			margin-bottom: 20px !important;
+		}
+		
+		.card-muted {
+			background-color: gray;
+			border-color: #333;
+		}

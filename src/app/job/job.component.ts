@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter } from '@angular/core';
-import { Job } from './job.model';
+import { Job, JobStatus } from './job.model';
 
 @Component({
   selector: 'app-job',
@@ -8,12 +8,32 @@ import { Job } from './job.model';
   inputs: ['job'],
 })
 export class JobComponent implements OnInit {
-  job:Job;
+  job: Job;
   constructor() {
-    
-   }
+
+  }
 
   ngOnInit() {
+  }
+
+  isStatusNotRun(): boolean {
+    return this.job.status === JobStatus.NotRun;
+  }
+
+  isStatusRunning(): boolean {
+    return this.job.status === JobStatus.Running;
+  }
+
+  isStatusError(): boolean {
+    return this.job.status === JobStatus.Failed;
+  }
+
+  isStatusSuccess(): boolean {
+    return this.job.status === JobStatus.Success;
+  }
+
+  isStatusStopped():boolean{
+    return this.job.status === JobStatus.Stopped;
   }
 
 }

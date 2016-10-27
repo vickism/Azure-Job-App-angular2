@@ -18,6 +18,9 @@ export class AppComponent {
   connectionState$: Observable<string>;
   private channel = "jobs";
   private eventName = "job";
+  displayJobOutput = false;
+  displayJobOutputId = "";
+  jobOutput = "";
 
   constructor(
     private _jobService: JobService,
@@ -28,14 +31,42 @@ export class AppComponent {
     this.jobs = [];
   };
 
-  private convertToJobs(jobsJson: any): void {
-    this.jobs = jobsJson.map(item => {
+  private convertToJobs(jobsJson: any): Job[] {
+    return jobsJson.map(item => {
       return this.convertToJob(item);
     });
   }
 
   private convertToJob(item: any): Job {
-    return new Job(item.title, JobStatus[String(item.status)], item.count);
+    return new Job(item.title, JobStatus[String(item.status)], item.count, item.lastRuntime, item.duration, item.output);
+  }
+
+  private updateJobsInASmartWay(jobs: Job[]): void {
+
+    jobs.forEach(element => {
+      var foundElement = this.jobs.find((value: Job) => {
+        return value.title === element.title;
+      });
+      if (!foundElement) {
+        this.jobs.push(element);
+      }
+      if (foundElement) {
+        foundElement.copy(element);
+      }
+    });
+
+    let indexValuesToRemove = [];
+    //remove extras
+    this.jobs.forEach(element => {
+      let index = jobs.findIndex(value => value.title === element.title);
+      if (index < 0) {
+        indexValuesToRemove.push(index);
+      }
+    });
+
+    indexValuesToRemove.forEach(element => {
+      this.jobs.splice(element, 1);
+    });
   }
 
   private initSignalR(): void {
@@ -59,7 +90,22 @@ export class AppComponent {
 
   jobSelected(jobId: string): void {
     console.log(`Job ${jobId} selected.`);
+    if (this.displayJobOutputId === jobId) {
+      this.displayJobOutput = false;
+      this.jobOutput = "";
+      this.displayJobOutputId = "";
+    } else {
+      this.displayJobOutputId = jobId;
+      this.displayJobOutput = true;
+      let job = this.jobs.find(element => element.title === jobId);
+      if (job) {
+        this.jobOutput = job.output;
+        console.log(this.jobOutput);
+      }
+    }
   }
+
+
 
   ngOnInit() {
     console.log("Starting the channel service");
@@ -75,7 +121,8 @@ export class AppComponent {
           case this.eventName: {
             console.log(x.Data);
             this.zone.run(() => {
-              this.convertToJobs(x.Data);
+              var jobs = this.convertToJobs(x.Data);
+              this.updateJobsInASmartWay(jobs);
             });
           }
         }

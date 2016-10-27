@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { JobComponent } from './job/job.component';
 import { JobListComponent } from './job-list/job-list.component';
 import { TaskComponent } from './task/task.component';
+import { JobSummaryComponent } from './job-summary/job-summary.component';
 
 let channelConfig = new ChannelConfig();
 channelConfig.url = "http://localhost:50601/signalr";
@@ -24,7 +25,8 @@ channelConfig.hubName = "EventHub";
     AppComponent,
     JobComponent,
     JobListComponent,
-    TaskComponent
+    TaskComponent,
+    JobSummaryComponent
   ],
   providers: [JobService, ChannelService, { "provide": SignalrWindow, "useValue": window },{ "provide": "channel.config", "useValue": channelConfig }],
   bootstrap: [AppComponent]

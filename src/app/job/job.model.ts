@@ -1,30 +1,22 @@
 export class Job {
-
-    statusColor: string;
-    constructor(public title: string, public status: JobStatus, public count: number) {
-        this.setStatusColor(status);
+    constructor(
+        public title: string,
+        public status: JobStatus, 
+        public count: number, 
+        public lastRuntime: string, 
+        public duration: string,
+        public output: string) {
     }
 
-    private setStatusColor(status): void {
-        switch (status) {
-            case JobStatus.NotRun:
-                this.statusColor = "";
-                break;
-
-            case JobStatus.Success:
-                this.statusColor = "green";
-                break;
-
-            case JobStatus.Running:
-                this.statusColor = "yellow";
-                break;
-
-            case JobStatus.Error:
-                this.statusColor = "red";
-                break;
-
-        }
+    copy(job:Job):void{
+        this.title =job.title;
+        this.status = job.status;
+        this.count = job.count;
+        this.lastRuntime = job.lastRuntime;
+        this.duration = job.duration;
+        this.output = job.output;
     }
+
 }
 
-export enum JobStatus { NotRun = 0, Success = 1, Running = 2, Error = 3 };
+export enum JobStatus { NotRun = 0, Success = 1, Running = 2, Failed = 3, Stopped = 4 };
