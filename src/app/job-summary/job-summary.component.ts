@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Job, JobStatus } from '../job/job.model';
+
+
 
 @Component({
   selector: 'app-job-summary',
@@ -7,20 +9,29 @@ import { Job, JobStatus } from '../job/job.model';
   styleUrls: ['./job-summary.component.css'],
   inputs: ['jobs'],
 })
-export class JobSummaryComponent implements OnInit {
-  jobs: Job[];
+@Input()
 
+export class JobSummaryComponent implements OnInit {
+ public jobs: Job[] ;
+  
+  
   constructor() {
+
   }
 
   ngOnInit() {
+    
   }
 
   TotalJobs(): number {
+    if(!this.jobs)
+      return 0;
     return this.jobs.length;
   }
 
   TotalRuns(): number {
+    if(!this.jobs)
+      return 0;
     let count = 0;
     this.jobs.forEach((value: Job) => {
       count += value.count;
@@ -29,7 +40,7 @@ export class JobSummaryComponent implements OnInit {
   }
 
   TotalSuccessfulJobs(): number {
-    if (this.jobs.length==0){
+    if (!this.jobs || this.jobs.length==0){
       return 0;
     }
     var success =  this.jobs.filter((value: Job, index: number, jobs: Job[]) => {
@@ -42,7 +53,7 @@ export class JobSummaryComponent implements OnInit {
   }
 
   TotalFailedJobs(): number {
-    if (this.jobs.length==0){
+    if (!this.jobs || this.jobs.length==0){
       return 0;
     }
     var failure =  this.jobs.filter((value: Job, index: number, jobs: Job[]) => {
@@ -55,7 +66,7 @@ export class JobSummaryComponent implements OnInit {
   }
 
   TotalStoppedJobs(): number {
-    if (this.jobs.length==0){
+    if (!this.jobs || this.jobs.length==0){
       return 0;
     }
     var failure =  this.jobs.filter((value: Job, index: number, jobs: Job[]) => {
@@ -68,7 +79,7 @@ export class JobSummaryComponent implements OnInit {
   }
 
   TotalRunningJobs(): number {
-    if (this.jobs.length==0){
+    if (!this.jobs || this.jobs.length==0){
       return 0;
     }
     var failure =  this.jobs.filter((value: Job, index: number, jobs: Job[]) => {
@@ -79,5 +90,4 @@ export class JobSummaryComponent implements OnInit {
 
      return Math.round((failure / total) * 100);
   }
-
 }

@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Job } from './job/job.model';
 import { JobStatus } from './job/job.model';
@@ -11,8 +11,8 @@ import { ChannelService, ConnectionState, ChannelEvent } from "./service/channel
   styleUrls: ['./app.component.css'],
   providers: []
 })
-export class AppComponent {
-  jobs: Job[];
+export class AppComponent implements OnInit {
+  public jobs: Job[];
   title = 'app works!';
   errormessage: string;
   connectionState$: Observable<string>;
@@ -26,11 +26,10 @@ export class AppComponent {
     private _jobService: JobService,
     private channelService: ChannelService,
     private zone: NgZone) {
-    //this._jobService.getJobs().subscribe((jobs: any) => this.convertToJobs(jobs), error => this.errormessage = error);
-    this.initSignalR();
-    this.jobs = [];
+    //this.initSignalR();
+    //this.jobs = [];
   };
-
+  
   private convertToJobs(jobsJson: any): Job[] {
     return jobsJson.map(item => {
       return this.convertToJob(item);
@@ -111,7 +110,8 @@ export class AppComponent {
     console.log("Starting the channel service");
     this.channelService.start();
     this.channelSubscribe();
-
+this._jobService.getJobs().subscribe((jobs: any) =>this.jobs= this.convertToJobs(jobs), error => this.errormessage = error);
+  console.log(this.jobs);
   }
 
   private channelSubscribe(): void {

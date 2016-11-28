@@ -5,12 +5,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class JobService {
     private url: string = '/data/alljobs.txt';
-    constructor(private http:Http) {
+    constructor(private _http:Http) {
     }
 
     getJobs(): Observable<Object> {
-        return this.http.get(this.url).map(this.extractData).catch(this.handleError);
-      
+        return this._http.get(this.url).map(this.extractData).catch(this.handleError);
     }
 
     private extractData(res: Response) {
