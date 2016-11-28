@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     //this.initSignalR();
     //this.jobs = [];
   };
-  
+
   private convertToJobs(jobsJson: any): Job[] {
     return jobsJson.map(item => {
       return this.convertToJob(item);
@@ -110,8 +110,8 @@ export class AppComponent implements OnInit {
     console.log("Starting the channel service");
     this.channelService.start();
     this.channelSubscribe();
-this._jobService.getJobs().subscribe((jobs: any) =>this.jobs= this.convertToJobs(jobs), error => this.errormessage = error);
-  console.log(this.jobs);
+    this._jobService.getJobs().subscribe((jobs: any) => this.jobs = this.convertToJobs(jobs), error => this.errormessage = error);
+    console.log(this.jobs);
   }
 
   private channelSubscribe(): void {
@@ -132,7 +132,4 @@ this._jobService.getJobs().subscribe((jobs: any) =>this.jobs= this.convertToJobs
       }
     )
   }
-
-
-
 }

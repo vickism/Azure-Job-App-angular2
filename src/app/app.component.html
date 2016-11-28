@@ -1,36 +1,32 @@
 <div class="container">
-		<div class="row">
-			<div class="anv alg ala" style="color: #cfd2da">
-				<h3 class="anx anw"></h3>
-			</div>
-			<h1>Azure WebJobs Monitor</h1>
+	<div class="row">
+		<div class="anv alg ala" style="color: #cfd2da">
+			<h3 class="anx anw"></h3>
 		</div>
-		<div class="row summary">
-			<div class="anv alg ala" style="color: #cfd2da">
-				<h3 class="anx anw">
-					Quick Summary
-				</h3>
-			</div>
-			<app-job-summary [jobs]="jobs"></app-job-summary>
+		<h1>Azure WebJobs Monitor</h1>
+	</div>
+	<div class="row summary">
+		<div class="anv alg ala" style="color: #cfd2da">
+			<h3 class="anx anw">
+				Quick Summary
+			</h3>
 		</div>
-		<div class="row tiles">
-			<div class="anv alg ala" style="color: #cfd2da">
-				<h3 class="anx anw">
-					Web Jobs Listing
-				</h3>
-			</div>
-			<div class="container">
-                <app-job-list [jobs]="jobs" (onJobSelected)="jobSelected($event)"></app-job-list>
-			</div>
+		<app-job-summary [jobs]="jobs"></app-job-summary>
+	</div>
+	<div class="row tiles">
+		<div class="anv alg ala" style="color: #cfd2da">
+			<h3 class="anx anw">
+				Web Jobs Listing
+			</h3>
 		</div>
-
-		<div *ngIf="displayJobOutput" class="row">
-			<pre style="color:white">
-				{{jobOutput}}
-			</pre>
+		<div class="container">
+			<app-job-list [jobs]="jobs" (onJobSelected)="jobSelected($event)"></app-job-list>
 		</div>
 	</div>
 
-
-
-
+	<div *ngIf="displayJobOutput" class="row">
+		<pre style="color:white">
+			{{jobOutput}}
+		</pre>
+	</div>
+</div>
